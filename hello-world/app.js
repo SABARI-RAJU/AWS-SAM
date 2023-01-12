@@ -1,6 +1,5 @@
 // const axios = require('axios')
 // const url = 'http://checkip.amazonaws.com/';
-// const mongoose = require('mongoose');
 const mongoose = require('mongoose');
 let response;
 let re;
@@ -38,11 +37,6 @@ exports.lambdaHandler = async (event, context) => {
             console.log("could not connect");
         }
         
-        // // Database connection
-        // // mongoose.connect('', {
-        // //     useNewUrlParser: true,
-        // //     useUnifiedTopology: true
-        // // },() => console.log(" Mongoose is connected"));
         
         // User model
         var skillSchema = new mongoose.Schema({
@@ -51,19 +45,6 @@ exports.lambdaHandler = async (event, context) => {
         });
 
         var User = mongoose.model('Employee', skillSchema,'Employee');
-        
-        // // Only one parameter [query/condition]
-        // // Find all documents that matches the
-        // // condition name='Punit'
-
-        // // User.find({}, function (err, docs) {
-        // //     if (err){
-        // //         console.log(err);
-        // //     }
-        // //     else{
-        // //         console.log("First function call : ", docs);
-        // //     }
-        // // });
 
         var users=await  User.find({});
 
@@ -104,12 +85,6 @@ exports.lambdaPostHandler = async (event, context) => {
             console.log("could not connect");
         }
         
-        // // Database connection
-        // // mongoose.connect('', {
-        // //     useNewUrlParser: true,
-        // //     useUnifiedTopology: true
-        // // },() => console.log(" Mongoose is connected"));
-        
         // User model
         var skillSchema = new mongoose.Schema({
             name: String,
@@ -136,8 +111,6 @@ exports.lambdaPostHandler = async (event, context) => {
 
         //     }
         // })
-
-        
             
         response = {
             'statusCode': 200,
